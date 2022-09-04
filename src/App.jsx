@@ -1,6 +1,7 @@
 import * as API from './services/launches';
 import React, {useState, useEffect} from 'react';
 import logo from './assets/logo-spacex.png';
+import './App.css';
 
 export function App() {
   const [launches, setLaunches] = useState([]);
