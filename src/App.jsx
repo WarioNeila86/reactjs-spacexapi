@@ -1,5 +1,6 @@
 import * as API from './services/launches';
 import React, {useState, useEffect} from 'react';
+import logo from './assets/logo-spacex.png';
 
 export function App() {
   const [launches, setLaunches] = useState([]);
@@ -11,6 +12,7 @@ export function App() {
 
   return (
     <React.Fragment>
+      <img src={logo} width={300}></img>
       <h1>SpaceX Launches</h1>
       <ul>
         {launches.map(launch => (
