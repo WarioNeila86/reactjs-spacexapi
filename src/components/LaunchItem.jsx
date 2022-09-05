@@ -1,4 +1,4 @@
-import { Box, Text, Spacer, Tag, Flex, Icon } from '@chakra-ui/react';
+import { Box, Text, Spacer, Tag, Flex, Icon, Button } from '@chakra-ui/react';
 import { HiCalendar } from "react-icons/hi";
 import { format } from 'date-fns';
 
@@ -27,6 +27,7 @@ export function LaunchItem(launch) {
           {format(new Date(launch.launch_date_local), 'd MMMM yyyy')}
         </Text>
       </Flex>
+      <Button marginTop={2} size="xs" colorScheme="blue">More Details</Button>
     </Box>
   );
 }
