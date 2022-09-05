@@ -2,6 +2,7 @@ import * as API from './services/launches';
 import React, { useState, useEffect } from 'react';
 import { Heading, Box, Image, Text, Spacer, Tag, Flex } from '@chakra-ui/react';
 import { HiCalendar } from "react-icons/hi";
+import { format } from 'date-fns';
 import logo from './assets/logo-spacex.png';
 
 export function App() {
@@ -40,7 +41,7 @@ export function App() {
             <Flex align="center">
               <HiCalendar />
               <Text marginLeft={1} fontSize="sm">
-                {launch.launch_date_local.split('T')[0]}
+                {format(new Date(launch.launch_date_local), 'd MMMM yyyy')}
               </Text>
             </Flex>
           </Box>
