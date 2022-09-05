@@ -1,5 +1,5 @@
 import { LaunchItem } from './LaunchItem';
-import { Heading } from '@chakra-ui/react';
+import { Heading, Spinner, Box } from '@chakra-ui/react';
 import * as API from '../services/launches';
 import { useState, useEffect } from 'react';
 
@@ -12,13 +12,23 @@ export function LaunchesList() {
 
   return (
     <>
-      <Heading as="h1" size="xl" margin={4}>
+      <Heading as="h1" size="xl" align='center' margin={4}>
         SpaceX Launches
-      </Heading><section>
-        {launches.map(launch => (
-          <LaunchItem key={`${launch.flight_number}_${launch.launch_date_unix}`} {...launch} />
-        ))}
-      </section>
+      </Heading>
+      {!launches || launches.length === 0
+        ? (
+          <Box align='center'>
+            <Spinner size="lg" />
+          </Box>
+
+        )
+        : (
+          <section>
+            {launches.map(launch => (
+              <LaunchItem key={`${launch.flight_number}_${launch.launch_date_unix}`} {...launch} />
+            ))}
+          </section>
+        )}
     </>
   )
 }
