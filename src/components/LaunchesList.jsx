@@ -25,7 +25,7 @@ export function LaunchesList() {
         : (
           <section>
             {launches.map(launch => (
-              <LaunchItem key={`${launch.flight_number}_${launch.launch_date_unix}`} {...launch} />
+              <LaunchItem key={`${launch.id}`} {...launch} />
             ))}
           </section>
         )}

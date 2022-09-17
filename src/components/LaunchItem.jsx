@@ -14,21 +14,21 @@ export function LaunchItem(launch) {
     >
       <Flex>
         <Text fontSize="2xl">
-          Mission <strong>{launch.mission_name}</strong> ({launch.launch_year})
+          Mission <strong>{launch.name}</strong> ({format(new Date(launch.date_local), 'yyyy')})
         </Text>
         <Spacer />
-        <Tag padding={2} colorScheme={launch.launch_success ? 'green' : 'red'}>
-          {launch.launch_success ? 'Success' : 'Failure'}
+        <Tag padding={2} colorScheme={launch.success ? 'green' : 'red'}>
+          {launch.success ? 'Success' : 'Failure'}
         </Tag>
       </Flex>
 
       <Flex align="center">
         <Icon as={HiCalendar} color="gray.500" />
         <Text marginLeft={1} fontSize="sm" color="gray.500">
-          {format(new Date(launch.launch_date_local), 'd MMMM yyyy')}
+          {format(new Date(launch.date_local), 'd MMMM yyyy')}
         </Text>
       </Flex>
-      <Link to={`/launchDetails/${launch.flight_number}`}>
+      <Link to={`/launchDetails/${launch.id}`}>
         <Button marginTop={2} size="xs" colorScheme="blue">More Details</Button>
       </Link>
     </Box>

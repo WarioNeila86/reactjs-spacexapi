@@ -1,4 +1,4 @@
-const API_URL = 'https://api.spacexdata.com/v3';
+const API_URL = 'https://api.spacexdata.com/v4';
 
 export const getAllLaunches = async () => {
   try {
@@ -10,9 +10,19 @@ export const getAllLaunches = async () => {
   }
 };
 
-export const getLaunchByFlyNumber = async flightNumber => {
+export const getLaunchById = async id => {
   try {
-    const response = await fetch(`${API_URL}/launches/${flightNumber}`);
+    const response = await fetch(`${API_URL}/launches/${id}`);
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const getLaunchpadById = async id => {
+  try {
+    const response = await fetch(`${API_URL}/launchpads/${id}`);
     const data = await response.json();
     return data;
   } catch (error) {
