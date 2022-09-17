@@ -29,3 +29,13 @@ export const getLaunchpadById = async id => {
     console.error(error);
   }
 };
+
+export const getRocketById = async id => {
+  try {
+    const response = await fetch(`${API_URL}/rockets/${id}`);
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error(error);
+  }
+};

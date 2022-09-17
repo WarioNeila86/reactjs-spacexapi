@@ -11,6 +11,7 @@ export function LaunchDetails() {
 
   const [launchDetails, setLaunchDetails] = useState({});
   const [launchpad, setLaunchpad] = useState({});
+  const [rocket, setRocket] = useState({});
 
   useEffect(() => {
     API.getLaunchById(launchId).then(setLaunchDetails).catch(console.error);
@@ -19,6 +20,9 @@ export function LaunchDetails() {
   useEffect(() => {
     if (launchDetails.launchpad) {
       API.getLaunchpadById(launchDetails.launchpad).then(setLaunchpad).catch(console.error);
+    }
+    if (launchDetails.rocket) {
+      API.getRocketById(launchDetails.rocket).then(setRocket).catch(console.error);
     }
   }, [launchDetails])
 
@@ -29,7 +33,7 @@ export function LaunchDetails() {
       </Heading>
       <Box bg="gray.100" padding={4} margin={4} borderRadius="lg">
         {
-          Object.keys(launchDetails).length === 0 || Object.keys(launchpad).length === 0
+          Object.keys(launchDetails).length === 0 || Object.keys(launchpad).length === 0 || Object.keys(rocket).length === 0
             ? (
               <Box align='center'>
                 <Spinner size="lg" />
@@ -49,6 +53,7 @@ export function LaunchDetails() {
                 <Box>
                   <Text><strong>Flight number:</strong> {launchDetails.flight_number}</Text>
                   <Text><strong>Launchpad:</strong> {launchpad.full_name}</Text>
+                  <Text><strong>Rocket:</strong> {rocket.name} - {rocket.company} ({rocket.country})</Text>
                   <Heading as="h3" size="xs" marginTop={3}>Links</Heading>
                   <Box marginTop={2} marginLeft={3}>
                     <Link href={launchDetails.links?.wikipedia} isExternal>
