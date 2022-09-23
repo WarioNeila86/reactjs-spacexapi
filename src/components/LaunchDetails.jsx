@@ -1,8 +1,8 @@
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { Box, Flex, Text, Tag, Spacer, Icon, Heading, Link, Spinner } from '@chakra-ui/react';
+import { Box, Button, Flex, Text, Tag, Spacer, Icon, Heading, Link, Spinner } from '@chakra-ui/react';
 import { SiWikipedia, SiYoutube } from "react-icons/si";
-import { BiNews } from "react-icons/bi";
+import { BiArrowBack, BiNews } from "react-icons/bi";
 import { format } from 'date-fns';
 import * as API from '../services/launches';
 
@@ -67,10 +67,15 @@ export function LaunchDetails() {
                     </Link>
                   </Box>
                 </Box>
+                <Link href='/' _hover={{textDecoration: 'none'}}>
+                  <Button size={['xs', 'xs', 'sm']} leftIcon={<BiArrowBack />} colorScheme='blackAlpha'>
+                    Go back
+                  </Button>
+                </Link>
               </>
             )
         }
       </Box>
-      </Box>
+    </Box>
   )
 }
