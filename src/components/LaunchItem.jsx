@@ -13,7 +13,7 @@ export function LaunchItem(launch) {
       borderRadius="lg"
     >
       <Flex>
-        <Text fontSize="2xl">
+        <Text fontSize={["l", "l", "2xl"]}>
           Mission <strong>{launch.name}</strong> ({format(new Date(launch.date_local), 'yyyy')})
         </Text>
         <Spacer />

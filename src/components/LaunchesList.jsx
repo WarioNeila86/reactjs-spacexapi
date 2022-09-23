@@ -23,11 +23,11 @@ export function LaunchesList() {
 
         )
         : (
-          <section>
+          <Box maxWidth='1024px' margin="auto">
             {launches.map(launch => (
               <LaunchItem key={`${launch.id}`} {...launch} />
             ))}
-          </section>
+          </Box>
         )}
     </>
   )

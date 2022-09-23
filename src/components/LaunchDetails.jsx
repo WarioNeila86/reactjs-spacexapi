@@ -27,7 +27,7 @@ export function LaunchDetails() {
   }, [launchDetails])
 
   return (
-    <>
+    <Box align="center" maxWidth='1024px' margin="auto">
       <Heading as="h1" size="xl" align='center' margin={4}>
         Launch Details
       </Heading>
@@ -42,7 +42,7 @@ export function LaunchDetails() {
             : (
               <>
                 <Flex>
-                  <Text fontSize="2xl">
+                  <Text fontSize={["l", "l", "2xl"]} textAlign={["left", "left", "center"]}>
                     Mission <strong>{launchDetails.name}</strong> ({launchDetails.date_local && format(new Date(launchDetails.date_local), 'dd-MM-yyyy')})
                   </Text>
                   <Spacer />
@@ -50,7 +50,7 @@ export function LaunchDetails() {
                     {launchDetails.success ? 'Success' : 'Failure'}
                   </Tag>
                 </Flex>
-                <Box>
+                <Box textAlign="left" marginTop={5}>
                   <Text><strong>Flight number:</strong> {launchDetails.flight_number}</Text>
                   <Text><strong>Launchpad:</strong> {launchpad.full_name}</Text>
                   <Text><strong>Rocket:</strong> {rocket.name} - {rocket.company} ({rocket.country})</Text>
@@ -71,6 +71,6 @@ export function LaunchDetails() {
             )
         }
       </Box>
-    </>
+      </Box>
   )
 }
