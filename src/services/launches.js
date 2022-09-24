@@ -39,3 +39,14 @@ export const getRocketById = async id => {
     console.error(error);
   }
 };
+
+export const getCrewMemberById = async id => {
+  try {
+    const response = await fetch(`${API_URL}/crew/${id}`);
+    const data = await response.json();
+    console.log(data);
+    return data;
+  } catch (error) {
+    console.error(error);
+  }
+};

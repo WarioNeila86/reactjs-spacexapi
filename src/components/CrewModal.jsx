@@ -1,32 +1,65 @@
 import {
+  Avatar,
   Box,
   Button,
+  HStack,
+  Icon,
+  List,
+  ListIcon,
+  ListItem,
   Modal,
   ModalOverlay,
   ModalContent,
   ModalHeader,
-  ModalFooter,
   ModalBody,
   ModalCloseButton,
   Text,
   useDisclosure
-} from '@chakra-ui/react'
+} from '@chakra-ui/react';
+import * as API from '../services/launches';
+import { useState, useEffect } from 'react';
+import { BsFillEmojiFrownFill, BsPersonCircle } from 'react-icons/bs';
 
-export function CrewModal() {
-
+export function CrewModal(launchDetails) {
   const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const [crewMembers, setCrewMembers] = useState([]);
+
+  useEffect(() => {
+    Promise.all(launchDetails.crew.map(id => API.getCrewMemberById(id))).then(setCrewMembers).catch(console.error);
+  }, []);
 
   return (
     <Box marginTop={4}>
       <Button size='xs' onClick={onOpen} colorScheme='blue' variant='outline'>Crew details</Button>
 
-      <Modal isOpen={isOpen} onClose={onClose}>
+      <Modal isOpen={isOpen} onClose={onClose} size={['xs', 'xs', 'md']}>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>Crew information</ModalHeader>
+          <ModalHeader fontSize={['l', 'l', '2xl']}>Crew information</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <Text>Bla bla bla</Text>
+            {
+              !crewMembers || crewMembers.length === 0
+                ? (
+                  <HStack>
+                    <Icon as={BsFillEmojiFrownFill} color='red.200' />
+                    <Text fontSize={['sm', 'sm', 'md']}>No crew info available for given launch</Text>
+                  </HStack>
+                )
+                : (
+                  <Box>
+                    <List>
+                      {crewMembers.map(member => (
+                        <ListItem key={member.id} marginTop={4}>
+                          <ListIcon as={BsPersonCircle} color='blue.600' />
+                          {member.name} <Avatar name={member.name} src={member.image} size='xs' />
+                        </ListItem>
+                      ))}
+                    </List>
+                  </Box>
+                )
+            }
           </ModalBody>
         </ModalContent>
       </Modal>

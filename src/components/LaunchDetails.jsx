@@ -55,7 +55,7 @@ export function LaunchDetails() {
                   <Text><strong>Flight number:</strong> {launchDetails.flight_number}</Text>
                   <Text><strong>Launchpad:</strong> {launchpad.full_name}</Text>
                   <Text><strong>Rocket:</strong> {rocket.name} - {rocket.company} ({rocket.country})</Text>
-                  <CrewModal />
+                  <CrewModal {...launchDetails}/>
                   <Heading as="h3" size="xs" marginTop={3}>Links</Heading>
                   <Box marginTop={2} marginLeft={3}>
                     <Link href={launchDetails.links?.wikipedia} isExternal>
