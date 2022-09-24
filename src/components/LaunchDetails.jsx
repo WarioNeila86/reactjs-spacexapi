@@ -1,9 +1,10 @@
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { Box, Button, Flex, Text, Tag, Spacer, Icon, Heading, Link, Spinner } from '@chakra-ui/react';
+import { Box, Button, Flex, Text, Tag, Spacer, Icon, Heading, Link, Spinner, List, ListIcon, ListItem } from '@chakra-ui/react';
 import { CrewModal } from './CrewModal';
 import { SiWikipedia, SiYoutube } from "react-icons/si";
 import { BiArrowBack, BiNews } from "react-icons/bi";
+import { IoAirplaneSharp, IoLocationSharp, IoRocketSharp } from "react-icons/io5";
 import { format } from 'date-fns';
 import * as API from '../services/launches';
 
@@ -52,10 +53,21 @@ export function LaunchDetails() {
                   </Tag>
                 </Flex>
                 <Box textAlign="left" marginTop={5}>
-                  <Text><strong>Flight number:</strong> {launchDetails.flight_number}</Text>
-                  <Text><strong>Launchpad:</strong> {launchpad.full_name}</Text>
-                  <Text><strong>Rocket:</strong> {rocket.name} - {rocket.company} ({rocket.country})</Text>
-                  <CrewModal {...launchDetails}/>
+                  <List>
+                    <ListItem>
+                      <ListIcon as={IoAirplaneSharp} />
+                      <strong>Flight number:</strong> {launchDetails.flight_number}
+                    </ListItem>
+                    <ListItem>
+                      <ListIcon as={IoLocationSharp} />
+                      <strong>Launchpad:</strong> {launchpad.full_name}
+                    </ListItem>
+                    <ListItem>
+                      <ListIcon as={IoRocketSharp} />
+                      <strong>Rocket:</strong> {rocket.name} - {rocket.company} ({rocket.country})
+                    </ListItem>
+                  </List>
+                  <CrewModal {...launchDetails} />
                   <Heading as="h3" size="xs" marginTop={3}>Links</Heading>
                   <Box marginTop={2} marginLeft={3}>
                     <Link href={launchDetails.links?.wikipedia} isExternal>
