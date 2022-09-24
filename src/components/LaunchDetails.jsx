@@ -1,11 +1,13 @@
 import { useParams } from 'react-router-dom';
-import { useState, useEffect } from 'react';
-import { Box, Button, Flex, Text, Tag, Spacer, Icon, Heading, Link, Spinner, List, ListIcon, ListItem } from '@chakra-ui/react';
-import { CrewModal } from './CrewModal';
-import { SiWikipedia, SiYoutube } from "react-icons/si";
-import { BiArrowBack, BiNews } from "react-icons/bi";
-import { IoAirplaneSharp, IoLocationSharp, IoRocketSharp } from "react-icons/io5";
+import { React, useState, useEffect } from 'react';
+import {
+  Box, Button, Flex, Heading, Icon, Link, List, ListIcon, ListItem, Spacer, Spinner, Tag, Text
+} from '@chakra-ui/react';
+import { SiWikipedia, SiYoutube } from 'react-icons/si';
+import { BiArrowBack, BiNews } from 'react-icons/bi';
+import { IoAirplaneSharp, IoLocationSharp, IoRocketSharp } from 'react-icons/io5';
 import { format } from 'date-fns';
+import { CrewModal } from './CrewModal';
 import * as API from '../services/launches';
 
 export function LaunchDetails() {
@@ -26,26 +28,34 @@ export function LaunchDetails() {
     if (launchDetails.rocket) {
       API.getRocketById(launchDetails.rocket).then(setRocket).catch(console.error);
     }
-  }, [launchDetails])
+  }, [launchDetails]);
 
   return (
-    <Box align="center" maxWidth='1024px' margin="auto">
-      <Heading as="h1" size="xl" align='center' margin={4}>
+    <Box align="center" maxWidth="1024px" margin="auto">
+      <Heading as="h1" size="xl" align="center" margin={4}>
         Launch Details
       </Heading>
       <Box bg="gray.100" padding={4} margin={4} borderRadius="lg">
         {
-          Object.keys(launchDetails).length === 0 || Object.keys(launchpad).length === 0 || Object.keys(rocket).length === 0
+          Object.keys(launchDetails).length === 0
+            || Object.keys(launchpad).length === 0
+            || Object.keys(rocket).length === 0
             ? (
-              <Box align='center'>
+              <Box align="center">
                 <Spinner size="lg" />
               </Box>
             )
             : (
               <>
                 <Flex>
-                  <Text fontSize={["l", "l", "2xl"]} textAlign={["left", "left", "center"]}>
-                    Mission <strong>{launchDetails.name}</strong> ({launchDetails.date_local && format(new Date(launchDetails.date_local), 'dd-MM-yyyy')})
+                  <Text fontSize={['l', 'l', '2xl']} textAlign={['left', 'left', 'center']}>
+                    Mission
+                    {' '}
+                    <strong>{launchDetails.name}</strong>
+                    {' '}
+                    (
+                    {launchDetails.date_local && format(new Date(launchDetails.date_local), 'dd-MM-yyyy')}
+                    )
                   </Text>
                   <Spacer />
                   <Tag padding={2} colorScheme={launchDetails.success ? 'green' : 'red'}>
@@ -56,15 +66,29 @@ export function LaunchDetails() {
                   <List>
                     <ListItem>
                       <ListIcon as={IoAirplaneSharp} />
-                      <strong>Flight number:</strong> {launchDetails.flight_number}
+                      <strong>Flight number:</strong>
+                      {' '}
+                      {launchDetails.flight_number}
                     </ListItem>
                     <ListItem>
                       <ListIcon as={IoLocationSharp} />
-                      <strong>Launchpad:</strong> {launchpad.full_name}
+                      <strong>Launchpad:</strong>
+                      {' '}
+                      {launchpad.full_name}
                     </ListItem>
                     <ListItem>
                       <ListIcon as={IoRocketSharp} />
-                      <strong>Rocket:</strong> {rocket.name} - {rocket.company} ({rocket.country})
+                      <strong>Rocket:</strong>
+                      {' '}
+                      {rocket.name}
+                      {' '}
+                      -
+                      {' '}
+                      {rocket.company}
+                      {' '}
+                      (
+                      {rocket.country}
+                      )
                     </ListItem>
                   </List>
                   <CrewModal {...launchDetails} />
@@ -81,8 +105,8 @@ export function LaunchDetails() {
                     </Link>
                   </Box>
                 </Box>
-                <Link href='/' _hover={{ textDecoration: 'none' }}>
-                  <Button size={['xs', 'xs', 'sm']} leftIcon={<BiArrowBack />} colorScheme='blackAlpha'>
+                <Link href="/" _hover={{ textDecoration: 'none' }}>
+                  <Button size={['xs', 'xs', 'sm']} leftIcon={<BiArrowBack />} colorScheme="blackAlpha">
                     Go back
                   </Button>
                 </Link>
@@ -91,5 +115,5 @@ export function LaunchDetails() {
         }
       </Box>
     </Box>
-  )
+  );
 }
