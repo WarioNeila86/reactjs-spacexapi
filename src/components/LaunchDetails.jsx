@@ -49,13 +49,8 @@ export function LaunchDetails() {
               <>
                 <Flex>
                   <Text fontSize={['l', 'l', '2xl']} textAlign={['left', 'left', 'center']}>
-                    Mission
-                    {' '}
-                    <strong>{launchDetails.name}</strong>
-                    {' '}
-                    (
-                    {launchDetails.date_local && format(new Date(launchDetails.date_local), 'dd-MM-yyyy')}
-                    )
+                    Mission <strong>{launchDetails.name}</strong>{' '}
+                    ({launchDetails.date_local && format(new Date(launchDetails.date_local), 'dd-MM-yyyy')})
                   </Text>
                   <Spacer />
                   <Tag padding={2} colorScheme={launchDetails.success ? 'green' : 'red'}>

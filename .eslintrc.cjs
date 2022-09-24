@@ -21,6 +21,7 @@ module.exports = {
     'max-len': ['error', { code: 120 }],
     'no-console': ['error', { allow: ['error'] }],
     'import/prefer-default-export': 'off',
-    'react/jsx-props-no-spreading': 'off'
+    'react/jsx-props-no-spreading': 'off',
+    'react/jsx-one-expression-per-line': 'off'
   }
 };

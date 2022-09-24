@@ -25,11 +25,7 @@ export function LaunchItem(launch) {
     >
       <Flex>
         <Text fontSize={['l', 'l', '2xl']}>
-          Mission
-          <strong>{name}</strong>
-          (
-          {format(new Date(date), 'yyyy')}
-          )
+          Mission <strong>{name}</strong> ({format(new Date(date), 'yyyy')})
         </Text>
         <Spacer />
         <Tag padding={2} colorScheme={success ? 'green' : 'red'}>
