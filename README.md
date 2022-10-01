@@ -21,7 +21,7 @@ React application that consumes [SpaceX API](https://github.com/r-spacex/SpaceX-
 
 ### Launch details
 
-<img src="https://i.ibb.co/DC06TCs/spacex-launchdetails.png" alt="Launches list" width="600" >
+<img src="https://i.ibb.co/zSwcMSY/Screenshot-from-2022-10-01-21-26-42.png" alt="Launches list" width="600" >
 
 ### Crew info modal
 
