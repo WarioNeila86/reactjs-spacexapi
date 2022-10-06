@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { React, useState, useEffect } from 'react';
 import {
-  AspectRatio, Box, Button, Flex, Heading, Icon, Link, List, ListIcon, ListItem, Spacer, Spinner, Tag, Text
+  AspectRatio, Box, Button, Flex, Heading, Icon, Image, Link, List, ListIcon, ListItem, Spacer, Spinner, Tag, Text
 } from '@chakra-ui/react';
 import { SiWikipedia } from 'react-icons/si';
 import { BiArrowBack, BiNews } from 'react-icons/bi';
@@ -57,6 +57,7 @@ export function LaunchDetails() {
                     {launchDetails.success ? 'Success' : 'Failure'}
                   </Tag>
                 </Flex>
+                <Image src={launchDetails.links.patch.small} boxSize={20} />
                 <Box textAlign="left" marginTop={5}>
                   <List>
                     <ListItem>
