@@ -26,3 +26,7 @@ React application that consumes [SpaceX API](https://github.com/r-spacex/SpaceX-
 ### Crew info modal
 
 <img src="https://i.ibb.co/tQ5Lc1M/spacex-crewinfo.png" alt="Launches list" width="600" >
+
+#### Sources
+* 📺 YouTube course: [REACT CURSO Práctico DESDE CERO - Desarrolla una app con React.js PASO A PASO](https://www.youtube.com/watch?v=4AFOCAgywLc&ab_channel=CarlosAzaustre-AprendeJavaScript)
+* 📺 YouTube course: [Cómo usar REACT ROUTER [2022] | Curso React.js Práctico DESDE CERO - Clase 2](https://www.youtube.com/watch?v=afDXVnDnBf4&t=688s&ab_channel=CarlosAzaustre-AprendeJavaScript)
